@@ -17,7 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 /* RUTAS */
 console.log("📦 Importando auth.routes");
 const authRoutes = require("./routes/auth.routes");
+
+console.log("📦 Importando user.routes");
+const userRoutes = require("./routes/user.routes");
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 
 /* ROOT */
 app.get("/", (req, res) => {
