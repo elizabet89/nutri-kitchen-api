@@ -1,11 +1,14 @@
 require("dotenv").config(); // 👈 ESTA LÍNEA ES LA CLAVE
-console.log("MONGO_URI=", process.env.MONGO_URI);
+
+
+
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
+//const mongoose = require("mongoose");
 
 const app = express();
-const mongoose = require("mongoose");
+
 
 /* SEGURIDAD */
 app.use(helmet());
@@ -35,9 +38,12 @@ app.get("/", (req, res) => {
 
 /* MONGODB BASE DEDATOS */
 
+/*
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB conectado"))
+.then(() => console.log("✅ MongoDB conectado"))
   .catch(err => console.error("❌ Error MongoDB:", err));
 
 console.log("✅ app.js exportado correctamente");
+*/
 module.exports = app;
+

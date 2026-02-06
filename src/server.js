@@ -2,6 +2,7 @@ require("dotenv").config(); // 👈 ESTA LÍNEA ES OBLIGATORIA
 
 const app = require("./app");
 const connectDB = require("./config/db");
+
 console.log("✅ server.js cargado");
 
 // conectar DB
