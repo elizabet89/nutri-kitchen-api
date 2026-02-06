@@ -38,12 +38,12 @@ app.get("/", (req, res) => {
 
 /* MONGODB BASE DEDATOS */
 
-/*
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("✅ MongoDB conectado"))
   .catch(err => console.error("❌ Error MongoDB:", err));
 
 console.log("✅ app.js exportado correctamente");
-*/
+
 module.exports = app;
 
