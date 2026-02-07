@@ -5,7 +5,7 @@ require("dotenv").config(); // 👈 ESTA LÍNEA ES LA CLAVE
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
-//const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const app = express();
 
