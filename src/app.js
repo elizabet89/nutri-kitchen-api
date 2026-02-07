@@ -24,8 +24,15 @@ const authRoutes = require("./routes/auth.routes");
 
 console.log("📦 Importando user.routes");
 const userRoutes = require("./routes/user.routes");
+
+console.log("📦 Importando orders.routes");
+const orderRoutes = require("./routes/orders.routes"); // <--- IMPORTANTE
+
+
+
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/orders", orderRoutes);
 
 /* ROOT */
 app.get("/", (req, res) => {
