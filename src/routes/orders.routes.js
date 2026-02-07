@@ -4,7 +4,7 @@ const authMiddleware = require("../middlewares/auth.middleware");
 const createOrderLogic = require("../logic/createOrderLogic");
 
 // Crear pedido
-router.post("/orders", authMiddleware, async (req, res) => {
+router.post("/", authMiddleware, async (req, res) => {
   try {
     const order = await createOrderLogic(req.user, req.body);
     res.status(201).json(order);
