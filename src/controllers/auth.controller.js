@@ -5,9 +5,9 @@ const User = require("../models/User");
 // 📝 REGISTRO DE USUARIO
 exports.register = async (req, res) => {
   try {
-    const { nombre, telefono, password, email } = req.body;
+    const { name, telefono, password, email } = req.body;
 
-    if (!nombre || !telefono || !password) {
+    if (!name|| !telefono || !password) {
       return res.status(400).json({ error: "Datos incompletos" });
     }
 
@@ -22,10 +22,11 @@ exports.register = async (req, res) => {
 
     // Crear usuario
     const newUser = new User({
-      nombre,
+      name,
       telefono,
       email,
       password: hashedPassword,
+       role: "admin" // 👈 DEBE existir en el enum
     });
 
     await newUser.save();
