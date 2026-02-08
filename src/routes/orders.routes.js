@@ -15,16 +15,14 @@ router.post("/", authMiddleware, async (req, res) => {
   }
 });
 
-// =======================
-// Ruta: Obtener pedidos del usuario
-// =======================
-router.get("/", authMiddleware, async (req, res) => {
+// Ruta: Obtener pedidos del usuario (con filtro opcional de status)
+router.get("/orders", authMiddleware, async (req, res) => {
   try {
-    const orders = await getOrdersLogic(req.user);
+    const status = req.query.status; // Recibimos query param ?status=pendiente
+    const orders = await getOrdersLogic(req.user, status);
     res.json(orders);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Error al obtener pedidos" });
+    res.status(400).json({ message: err.message });
   }
 });
 

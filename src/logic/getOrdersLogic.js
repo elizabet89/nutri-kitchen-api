@@ -1,9 +1,17 @@
 const Order = require("../models/Order");
 
-const getOrdersLogic = async (user) => {
-  // Busca todos los pedidos del usuario
-  const orders = await Order.find({ user: user.id }).sort({ createdAt: -1 });
+module.exports = async (user, status) => {
+  if (!user || !user.id) {
+    throw new Error("Usuario no válido");
+  }
+
+  const query = { user: user.id };
+  if (status) {
+    query.status = status; // Filtramos por status si se pasa
+  }
+
+  // Traemos los pedidos del usuario, más recientes primero
+  const orders = await Order.find(query).sort({ createdAt: -1 });
+
   return orders;
 };
-
-module.exports = getOrdersLogic;
