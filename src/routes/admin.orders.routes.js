@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const authMiddleware = require("../middlewares/auth.middleware");
+
+
 const isAdmin = require("../middlewares/isAdmin");
 const {
   getAllOrders
@@ -14,5 +16,8 @@ router.get(
   isAdmin,
   getAllOrders
 );
+
+
+
 
 module.exports = router;
