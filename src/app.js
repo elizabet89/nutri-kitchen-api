@@ -31,6 +31,12 @@ const orderRoutes = require("./routes/orders.routes"); // <--- IMPORTANTE
 const adminOrdersRoutes = require("./routes/admin.orders.routes");
 
 
+console.log("📦 Importando product.routes");
+const productRoutes = require("./routes/product.routes");
+
+console.log("📦 Importando ingredient.routes");
+const ingredientRoutes = require("./routes/ingredient.routes");
+
 
 
 
@@ -38,6 +44,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/admin", adminOrdersRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/ingredients", ingredientRoutes);
 
 /* ROOT */
 app.get("/", (req, res) => {
