@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema({
     extra: { type: Boolean, default: false },
     type: { type: String, enum: ["revuelto", "aparte"], required: true }
   },
-  utensils: { type: String, enum: ["eco", "normal"], required: true },
+  utensils: { type: String, enum: ["sin tenedor", "con tenedor"], required: true },
   extraCost: { type: Number, default: 0 },
   totalPrice: { type: Number, required: true },
   status: { type: String, enum: ["pendiente", "pagado", "asignado"], default: "pendiente" },

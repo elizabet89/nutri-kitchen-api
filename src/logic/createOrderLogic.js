@@ -31,12 +31,17 @@ module.exports = async (user, orderData) => {
   // Calcular costo extra
   let extraCost = 0;
 
-ingredients.forEach(i => {
-  if (i.extra) extraCost += EXTRA_PRICE;
-});
-  if (protein?.extra) extraCost += EXTRA_PRICE;
-  if (complement?.extra) extraCost += EXTRA_PRICE;
-  if (dressing?.extra) extraCost += EXTRA_PRICE;
+  // Recorremos todos los extras posibles y sumamos el costo si están marcados como extra
+  const extras = [
+    ...ingredients,
+    protein,
+    complement,
+    dressing
+  ];
+
+  extras.forEach(i => {
+    if (i?.extra) extraCost += EXTRA_PRICE;
+  });
 
   const totalPrice = SALAD_PRICES[saladType] + extraCost;
 
