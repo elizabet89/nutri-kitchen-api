@@ -38,6 +38,11 @@ console.log("📦 Importando ingredient.routes");
 const ingredientRoutes = require("./routes/ingredient.routes");
 
 
+const proteinRoutes = require("./routes/protein.routes");
+
+
+const complementRoutes = require("./routes/complement.routes");
+
 
 
 app.use("/api/auth", authRoutes);
@@ -46,6 +51,8 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/admin", adminOrdersRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/ingredients", ingredientRoutes);
+app.use("/api/proteins", proteinRoutes);
+app.use("/api/complements", complementRoutes);
 
 /* ROOT */
 app.get("/", (req, res) => {

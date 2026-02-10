@@ -1,43 +1,29 @@
+console.log("✅ product.routes.js cargado");
+
 const express = require("express");
 const router = express.Router();
 
-const Product = require("../models/Product");
+const productController = require("../controllers/product.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
-const adminMiddleware = require("../middlewares/isAdmin");
+const isAdmin = require("../middlewares/isAdmin");
 
-/*
-  Crear producto (solo admin)
-*/
+// 🧪 Test
+router.get("/test", (req, res) => {
+  res.json({ message: "Ruta products funcionando 🥗" });
+});
+
+// ➕ Crear producto (admin)
 router.post(
   "/",
   authMiddleware,
-  adminMiddleware,
-  async (req, res) => {
-    try {
-      const { name, description, price, image } = req.body;
+  isAdmin,
+  productController.createProduct
+);
 
-      if (!name || !price) {
-        return res.status(400).json({ error: "Nombre y precio son obligatorios" });
-      }
-
-      const product = new Product({
-        name,
-        description,
-        price,
-        image
-      });
-
-      await product.save();
-
-      res.status(201).json({
-        message: "Producto creado correctamente",
-        product
-      });
-    } catch (error) {
-      console.error("❌ Error creando producto:", error);
-      res.status(500).json({ error: "Error del servidor" });
-    }
-  }
+// 📋 Obtener menú público
+router.get(
+  "/",
+  productController.getProducts
 );
 
 module.exports = router;

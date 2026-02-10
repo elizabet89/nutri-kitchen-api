@@ -12,14 +12,14 @@ const ingredientSchema = new mongoose.Schema(
         "ingrediente",
         "proteina",
         "complemento",
-        "aderezo",
-        "extra"
+        "aderezo"
+        
       ],
       required: true
     },
     extraCost: {
       type: Number,
-      default: 0
+      default: 25
     },
     available: {
       type: Boolean,
