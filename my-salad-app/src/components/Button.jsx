@@ -1,6 +1,8 @@
-export default function Button({ children }) {
+export default function Button({ children, className }) {
   return (
-    <button className="px-6 py-3 bg-sunshine-dark text-white font-semibold rounded-lg shadow hover:bg-sunshine transition">
+    <button
+      className={`px-6 py-3 rounded-lg shadow font-semibold transition  ${className}`}
+    >
       {children}
     </button>
   )

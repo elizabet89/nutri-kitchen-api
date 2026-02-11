@@ -1,5 +1,7 @@
 import './App.css';
 import './index.css';
+
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProductPage from './pages/ProductPage'; // Importa ProductPage
 import Button from './components/Button'; // Importa Button
@@ -18,6 +20,8 @@ export default function App() {
               <p className="text-xl text-gray-700 mb-6">
                 Frescura y salud en cada ensalada
               </p>
+       
+
        
 
               <Button>
