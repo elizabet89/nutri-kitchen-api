@@ -1,6 +1,7 @@
 // src/pages/ProductPage.jsx
 import ProductCard from '../components/ProductCard'; // Importa ProductCard
 import { useCart } from "../context/useCart";
+import CartPanel from "../components/CartPanel";
 
 export default function ProductPage() {
   const products = [
@@ -41,7 +42,9 @@ const { cart } = useCart();
             description={product.description}
             price={product.price}
           />
+          
         ))}
+         <CartPanel />
       </div>
     </div>
   );
