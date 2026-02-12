@@ -1,14 +1,22 @@
 import { useState } from "react";
 import Button from "./Button";
+import { useCart } from "../context/useCart";
 
 export default function ProductCard({ name, description }) {
   const [size, setSize] = useState("individual");
-
-  const handleSizeChange = (event) => {
-    setSize(event.target.value);
-  };
+  const { addToCart } = useCart();
 
   const calculatedPrice = size === "grande" ? 159 : 120;
+
+  const handleOrder = () => {
+      console.log("AGREGANDO AL CARRITO");
+    addToCart({
+      name,
+      size,
+      price: calculatedPrice,
+      quantity: 1,
+    });
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-md p-6 text-center">
@@ -23,33 +31,31 @@ export default function ProductCard({ name, description }) {
         <label className="inline-flex items-center mr-6">
           <input
             type="radio"
-            name={`${name}-size`}   // 👈 cada producto tiene su propio grupo
+            name={`${name}-size`}
             value="individual"
             checked={size === "individual"}
-            onChange={handleSizeChange}
-            className="form-radio text-sunshine-dark"
+            onChange={(e) => setSize(e.target.value)}
           />
-          <span className="ml-2 text-sunshine-dark">Individual - $120</span>
+          <span className="ml-2">Individual - $120</span>
         </label>
 
         <label className="inline-flex items-center">
           <input
             type="radio"
-            name={`${name}-size`}   // 👈 mismo grupo, pero único por producto
+            name={`${name}-size`}
             value="grande"
             checked={size === "grande"}
-            onChange={handleSizeChange}
-            className="form-radio text-sunshine-dark"
+            onChange={(e) => setSize(e.target.value)}
           />
           <span className="ml-2">Grande - $159</span>
         </label>
       </div>
 
-      <span className="block text-lg font-semibold text-sunshine-dark mb-4">
+      <span className="block text-lg font-semibold mb-4">
         ${calculatedPrice}
       </span>
 
-      <Button className=" text-bold ">Ordenar</Button>
+      <Button className="text-bold" onClick={handleOrder}>Ordenar</Button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 // src/pages/ProductPage.jsx
 import ProductCard from '../components/ProductCard'; // Importa ProductCard
+import { useCart } from "../context/useCart";
 
 export default function ProductPage() {
   const products = [
@@ -20,12 +21,18 @@ export default function ProductPage() {
     },
   ];
 
+const { cart } = useCart();
+
+  console.log("Carrito:", cart);
+
   return (
     <div className="bg-greenfood min-h-screen bg-greenfood text-sunshine-dark p-6">
       <h1 className="text-4xl font-bold text-center text-white mb-8">Nuestras Ensaladas</h1>
-
+<h1>Productos</h1>
+      <p>Items en carrito: {cart.length}</p>
       {/* Contenedor para las tarjetas usando Grid */}
       <div className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
         {/* Mapeo de los productos */}
         {products.map((product, index) => (
           <ProductCard

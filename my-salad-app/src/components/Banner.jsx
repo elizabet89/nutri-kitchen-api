@@ -1,6 +1,10 @@
 import Button from "./Button"
 
+
 export default function Banner() {
+
+ 
+
   return (
     <div className="bg-greenfood-dark text-white py-12 text-center">
       <h1 className="text-4xl font-bold mb-4">🌱 Green Food</h1>
@@ -9,3 +13,4 @@ export default function Banner() {
     </div>
   )
 }
+

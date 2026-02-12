@@ -1,9 +1,11 @@
-export default function Button({ children, className }) {
+export default function Button({ children, onClick, className }) {
   return (
     <button
-      className={`px-6 py-3 rounded-lg shadow font-semibold transition  ${className}`}
+      type="button"
+      onClick={onClick}
+      className={`bg-white text-greenfood-dark px-4 py-2 rounded-lg shadow hover:bg-gray-100 ${className}`}
     >
       {children}
     </button>
-  )
+  );
 }
